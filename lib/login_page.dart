@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:http/http.dart' as http;
 import 'LoginModel.dart';
-import 'package:sn_progress_dialog/sn_progress_dialog.dart';
+// import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -17,10 +17,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    ProgressDialog pd = ProgressDialog(context: context);
+    // ProgressDialog pd = ProgressDialog(context: context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text("Login"),
         backgroundColor: Colors.orange,
       ),
@@ -68,9 +69,9 @@ class _LoginPageState extends State<LoginPage> {
                     buttonColor: Colors.orange,
                     child: RaisedButton(
                         onPressed: () async {
-                          pd.show(max: 100, msg: 'Loading...');
+                          // pd.show(max: 100, msg: 'Loading...');
                           await this._doLogin();
-                          pd.close();
+                          // pd.close();
                         },
                         child: const Text("Login",
                             style: TextStyle(color: Colors.white)))),
@@ -86,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
     if (txtUsername.text.isEmpty || txtPassword.text.isEmpty) {
       Alert(context: context, title: "Data Tidak Benar", type: AlertType.error)
           .show();
+
       return;
     }
 
@@ -105,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
           .show();
     } else {
       print(response.body);
-      Alert(context: context, title: "Login Gagal", type: AlertType.error)
+      await Alert(context: context, title: "Login Gagal", type: AlertType.error)
           .show();
     }
   }

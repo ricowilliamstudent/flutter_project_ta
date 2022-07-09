@@ -18,7 +18,7 @@ class _iptablesState extends State<iptables> {
     waktu = waktu.replaceAll(" ", ".");
     try {
       final response = await http.get(Uri.parse(
-          "http://10.30.10.37:8080/api/accept/" +
+          "http://192.168.43.247:8080/api/accept/" +
               ip +
               "/" +
               waktu +
@@ -45,7 +45,7 @@ class _iptablesState extends State<iptables> {
     waktu = waktu.replaceAll(" ", ".");
     try {
       final response = await http.get(Uri.parse(
-          "http://10.30.10.37:8080/api/reject/" +
+          "http://192.168.43.247:8080/api/reject/" +
               ip +
               "/" +
               waktu +
@@ -73,7 +73,12 @@ class _iptablesState extends State<iptables> {
     waktu = waktu.replaceAll(" ", ".");
     try {
       final response = await http.get(Uri.parse(
-          "http://10.30.10.37:8080/api/drop/" + ip + "/" + waktu + "/" + tipe));
+          "http://192.168.43.247:8080/api/drop/" +
+              ip +
+              "/" +
+              waktu +
+              "/" +
+              tipe));
       print(response.body);
       // cek apakah respon berhasil
       if (response.statusCode == 200) {
@@ -93,8 +98,8 @@ class _iptablesState extends State<iptables> {
 
   Future _getData() async {
     try {
-      final response =
-          await http.get(Uri.parse("http://10.30.10.37:8080/api/getiptables"));
+      final response = await http
+          .get(Uri.parse("http://192.168.43.247:8080/api/getiptables"));
 
       // cek apakah respon berhasil
       if (response.statusCode == 200) {

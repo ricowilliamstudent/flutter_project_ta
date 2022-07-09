@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
 
     // 'php artisan passport:install' in ubuntu server to connect
     final response = await http.post(
-        Uri.parse('http://10.30.10.37:8080/api/login'),
+        Uri.parse('http://192.168.43.247:8080/api/login'),
         body: {'username': txtUsername.text, 'password': txtPassword.text},
         headers: {'Accept': 'application/json'});
 

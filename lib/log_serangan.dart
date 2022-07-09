@@ -12,12 +12,13 @@ class logserangan extends StatefulWidget {
 
 class _logseranganState extends State<logserangan> {
   List _get = [];
+
   Future _accept(String ip, String tipe, String waktu) async {
     tipe = tipe.contains('ICMP') ? "ICMP" : "TCP";
     waktu = waktu.replaceAll(" ", ".");
     try {
       final response = await http.get(Uri.parse(
-          "http://10.30.10.37:8080/api/accept/" +
+          "http://192.168.43.247:8080/api/accept/" +
               ip +
               "/" +
               waktu +
@@ -28,7 +29,6 @@ class _logseranganState extends State<logserangan> {
       if (response.statusCode == 200) {
         print("jalan");
         final data = jsonDecode(response.body);
-
         setState(() {
           //memasukan data yang di dapat dari internet ke variabel _get
           print(data);
@@ -45,7 +45,7 @@ class _logseranganState extends State<logserangan> {
     waktu = waktu.replaceAll(" ", ".");
     try {
       final response = await http.get(Uri.parse(
-          "http://10.30.10.37:8080/api/reject/" +
+          "http://192.168.43.247:8080/api/reject/" +
               ip +
               "/" +
               waktu +
@@ -56,7 +56,6 @@ class _logseranganState extends State<logserangan> {
       if (response.statusCode == 200) {
         print("jalan");
         final data = jsonDecode(response.body);
-
         setState(() {
           //memasukan data yang di dapat dari internet ke variabel _get
           print(data);
@@ -73,7 +72,12 @@ class _logseranganState extends State<logserangan> {
     waktu = waktu.replaceAll(" ", ".");
     try {
       final response = await http.get(Uri.parse(
-          "http://10.30.10.37:8080/api/drop/" + ip + "/" + waktu + "/" + tipe));
+          "http://192.168.43.247:8080/api/drop/" +
+              ip +
+              "/" +
+              waktu +
+              "/" +
+              tipe));
       print(response.body);
       // cek apakah respon berhasil
       if (response.statusCode == 200) {
@@ -94,7 +98,7 @@ class _logseranganState extends State<logserangan> {
   Future _getData() async {
     try {
       final response =
-          await http.get(Uri.parse("http://10.30.10.37:8080/api/getlog"));
+          await http.get(Uri.parse("http://192.168.43.247:8080/api/getlog"));
 
       // cek apakah respon berhasil
       if (response.statusCode == 200) {
@@ -152,6 +156,14 @@ class _logseranganState extends State<logserangan> {
                           children: [
                             Icon(Icons.timer_sharp),
                             Text("Waktu : " + _get[index][0]),
+                          ],
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(5),
+                        child: Row(
+                          children: [
+                            Icon(Icons.assignment_late_outlined),
+                            Text("Serangan : " + _get[index][1]),
                           ],
                         )),
                     Container(

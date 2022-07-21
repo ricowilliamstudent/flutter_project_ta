@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(40.0),
           child: ListView(
             children: <Widget>[
-              Image.asset('images/suricataicon.png', scale: 2),
+              Image.asset('images/iconaplikasi.png', scale: 2),
 // Card serangan terbaru
               Card(
                 shape: OutlineInputBorder(

@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: <Widget>[
                 Image.asset(
-                  'images/suricataicon.png',
+                  'images/iconaplikasi.png',
                   scale: 3,
                 ),
                 TextFormField(

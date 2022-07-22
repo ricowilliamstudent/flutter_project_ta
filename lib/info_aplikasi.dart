@@ -17,8 +17,8 @@ class infoaplikasi extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'images/iconaplikasi.png',
-              scale: 3,
+              'images/suricataicon.png',
+              scale: 2,
             ),
             Card(
               shape: OutlineInputBorder(
